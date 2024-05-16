@@ -1,0 +1,87 @@
+.a-habitats {
+}
+
+.a-habitat-desc {
+}
+
+.habitat-images {
+	display: grid;
+	grid-gap: 10px;
+
+	/* fill the page's width with columns, each having from about 200 to 400 px */
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
+	/* first row's height: 250px, second row's: 150px, third row's: 250px, and so on */
+	grid-auto-rows: 250px 250px;
+
+	/* from MDN: "fill in holes earlier in the grid, if smaller items come up later" */
+	grid-auto-flow: dense;
+	// padding: 16px;
+	// border: 1px solid;
+	// border-color: rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+
+	.image-content {
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		/* for larger screens... */
+		@media (min-width: 480px) {
+			/* first item will have size 2x2 */
+			&:first-child {
+				grid-area: 1 / 1 / span 1 / span 2;
+			}
+
+			/* and every third item will have size 2x1 */
+			&:nth-child(3n) {
+				grid-column: span 2;
+			}
+		}
+	}
+}
+
+.a-card {
+	transition: transform 0.3s ease-in-out;
+
+	&:hover {
+		transform: scale(1.03);
+	}
+	width: 100%;
+	border-radius: 8px;
+
+	.a-card-image {
+		border-radius: 8px 8px 0 0;
+		img {
+			width: 100%;
+			border-radius: 8px 8px 0 0;
+		}
+	}
+
+	.a-card-label {
+		padding: 20px;
+		border-radius: 0 0 8px 8px;
+		background-color: $olive;
+
+		span.material-icons {
+			font-size: 40px;
+			font-weight: 700;
+		}
+		a {
+			text-decoration: none;
+		}
+
+		h3 {
+			font-size: 20px;
+			font-weight: 700;
+			color: $white;
+
+			span {
+				display: block;
+				font-weight: 300;
+			}
+		}
+	}
+}

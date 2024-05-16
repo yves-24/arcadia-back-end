@@ -1,0 +1,47 @@
+.a-animals {
+	.a-card {
+		a {
+		}
+		a:hover {
+			.a-card-label {
+				background-color: $olive;
+			}
+		}
+		img {
+			border-radius: 12px;
+		}
+		.a-card-label {
+			width: 100%;
+			bottom: 0;
+			border-radius: 0 0 12px 12px;
+			background-color: transparentize($color: $olive, $amount: 0.35);
+			transition: background-color 0.25s ease-in-out;
+		}
+	}
+}
+
+.a-animal-desc {
+	.animal-desc {
+		background-color: $olive;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		flex-direction: column;
+		padding: 1rem 4rem;
+		color: transparentize($color: $white, $amount: 0.25);
+		font-family: $poppins;
+	}
+
+	h4 span,
+	h5 span {
+		color: $white;
+		font-style: italic;
+		font-weight: 600;
+		font-family: $poppins;
+	}
+
+	p {
+		font-size: 18px;
+	}
+}

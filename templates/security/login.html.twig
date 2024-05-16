@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+
+
+    <section class="a-login py-5 d-flex align-items-center" id="a-login">
+        <div class="container my-5 h-100">
+            <div class="row align-items-center h-100">
+                <div class="col-md-6 col-sm-12 d-flex align-items-center">
+                    <h1 class="kaushan-script-regular release-rate">Se connecter</h1>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <form method="post">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        {% if app.user %}
+                            <div class="mb-3">
+                                Vous etes connectés en tant que {{ app.user.userIdentifier }}, <a href="{{ path('arcadia_logout') }}">Se Déconnecter.</a>
+                            </div>
+                        {% endif %}
+
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}"
+                        >
+                        <div class="mb-3">
+                            <label for="username" class="form-label fw-bold poppins">Email: </label>
+                            <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control poppins"
+                                   required placeholder="ivantrottoir@gmail.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label fw-bold poppins">Mot de passe: </label>
+                            <input type="password" name="_password" id="password" class="form-control poppins" required>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit"class="btn btn-dark btn-lg px-5 py-3 fw-bold">Se connecter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

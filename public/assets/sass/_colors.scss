@@ -1,0 +1,43 @@
+$white: #ffffff;
+$pear: #dced31;
+$olive: #728309;
+$pakistan-green: #0f3f00;
+$field-drab: #6d6500;
+$brown: #8d5923;
+$rich-black: #0b091e;
+$black: #000000;
+
+.text-pear {
+	color: $pear !important;
+}
+
+.text-olive {
+	color: $olive !important;
+}
+
+.bg-brown {
+	background-color: $brown !important;
+	color: $white !important;
+}
+
+.bg-rich-black {
+	background-color: $rich-black !important;
+	color: $white;
+}
+
+.bg-olive {
+	background-color: $olive !important;
+	color: $white;
+}
+
+.bg-rich-black-transparentize {
+	background-color: transparentize($color: $rich-black, $amount: 0.25);
+}
+
+.bg-pakistan-green-transparentize {
+	background-color: transparentize($color: $pakistan-green, $amount: 0.65);
+}
+
+.bg-pear-transparentize {
+	background-color: transparentize($color: $pear, $amount: 0.35);
+}

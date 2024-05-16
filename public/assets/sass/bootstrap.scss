@@ -1,0 +1,67 @@
+@import "functions";
+
+// Default variable overrides
+$primary: #dced31;
+$success: #728309;
+$secondary: #0f3f00;
+$warning: #8d5923;
+$dark: #0b091e;
+
+$btn-border-radius: 3.125rem;
+$btn-border-radius-sm: $btn-border-radius;
+$btn-border-radius-lg: $btn-border-radius;
+
+$pagination-color: $success;
+$pagination-hover-color: $success;
+$pagination-hover-bg: transparentize($success, 0.75);
+$pagination-hover-border-color: transparentize($success, 0.65);
+$pagination-border-color: transparentize($success, 0.35);
+$pagination-active-color: #ffffff;
+$pagination-active-bg: $success;
+$pagination-active-border-color: $success;
+
+@import "variables";
+@import "variables-dark";
+@import "maps";
+@import "mixins";
+@import "utilities";
+
+// Layout & components
+@import "root";
+@import "reboot";
+@import "type";
+@import "images";
+@import "containers";
+@import "grid";
+@import "tables";
+@import "forms";
+@import "buttons";
+@import "transitions";
+@import "dropdown";
+@import "button-group";
+@import "nav";
+@import "navbar";
+@import "card";
+@import "accordion";
+@import "breadcrumb";
+@import "pagination";
+@import "badge";
+@import "alert";
+@import "progress";
+@import "list-group";
+@import "close";
+@import "toasts";
+@import "modal";
+@import "tooltip";
+@import "popover";
+@import "carousel";
+@import "spinners";
+@import "offcanvas";
+@import "placeholders";
+
+// Helpers
+@import "helpers";
+
+// Utilities
+@import "utilities/api";
+// scss-docs-end import-stack
