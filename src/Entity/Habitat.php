@@ -47,6 +47,9 @@ class Habitat
     #[ORM\Column(length: 32, nullable: true)]
     private ?string $imageSize = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
+
     /**
      * @return File|null
      */
@@ -62,6 +65,9 @@ class Habitat
     public function setImageFile(?File $imageFile): Habitat
     {
         $this->imageFile = $imageFile;
+        if (null !== $imageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
         return $this;
     }
 
@@ -184,5 +190,17 @@ class Habitat
 
     public function __toString() {
         return $this->name;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 }

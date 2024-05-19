@@ -21,7 +21,7 @@ class AppFixtures extends Fixture
             ->setName('Arcadia')
             ->setFirstname('Jose')
             ->setEmail('jose@arcadia.org')
-            ->setRoles(['ROLE_ADMIN'])
+            ->setRoles(['ROLE_BOSS'])
             ->setPassword($hashedPassword);
         $manager->persist($user);
 

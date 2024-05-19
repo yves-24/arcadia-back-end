@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="a-banner a-habitat d-flex justify-content-center align-items-center flex-wrap" id="a-banner"
+             style="background: url({{ vich_uploader_asset(habitat, 'imageFile') | imagine_filter('habitat_banner') }}) center
+                     center
+                     no-repeat;">
+        <div class="container-fluid">
+            <div class="banner-text">
+                <h1 class="banner-main-title mb-4">Habitat des Perroquets</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="a-habitat-desc py-5" id="a-habitat-desc">
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-md-8 col-sm-12">
+                    {% if habitat.animal | length != 0 %}
+                        <div class="habitat-images py-3">
+                            {% for animal in habitat.animal %}
+                                <div class="image-content">
+                                    <a href="{{ path('arcadia_animal_single', {'slug': animal.slug}) }}">
+                                        <img src="{{ vich_uploader_asset(animal, 'imageFile') | imagine_filter('habitat_gallery_presentation') }}"
+                                             alt="{{ animal.firstname }}"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-4 col-sm-12 py-3 ps-5">
+                    <div class="row">
+                        <h3 class="roboto-slab mb-3">L’ HABITAT DE {{ habitat.name }}</h3>
+                        <p class="mb-5">
+                            {{ habitat.description | striptags | raw }}
+                        </p>
+                    </div>
+
+                    {% if habitat.animal | length != 0 %}
+                        <div class="row">
+                            <h4 class="roboto-slab mb-3">Dans cet habitat nous avons</h4>
+                            <ul class="animal-list list-unstyled ps-3">
+                                {% for animal in habitat.animal %}
+                                    <li class="animal-each mb-3">
+                                        <a href="{{ path('arcadia_animal_single', {'slug': animal.slug}) }}" class="text-decoration-none text-secondary
+                                        fw-medium">
+                                            {{ animal.firstname }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block title %}
+    {{ habitat.name }}
+{% endblock %}
+

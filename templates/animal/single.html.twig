@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="a-banner a-animal d-flex justify-content-center align-items-center flex-wrap" id="a-banner"
+             style="background: url({{ vich_uploader_asset(animal, 'imageFile') | imagine_filter('habitat_banner') }}) center
+                     center
+                     no-repeat;">
+        <div class="container-fluid">
+            <div class="banner-text">
+                <h1 class="banner-main-title mb-4">{{ animal.firstname }}</h1>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="a-services bg-rich-black text-white py-5 d-flex justify-content-center align-items-center" id="a-services">
+        <div class="container my-5">
+            {% if services | length > 0 %}
+                <h1 class="text-center fw-bold roboto-slab my-5">Nos Services</h1>
+                <div class="row justify-content-center mb-5">
+                    {% for service in services %}
+                        <div class="col-md-4 col-sm-1">
+                            <div class="service px-3 py-4">
+                                <span class="material-icons"> {{ service.icon }} </span>
+                                <h5 class="fw-medium poppins mb-3">{{ service.name }}</h5>
+                                <p> {{ service.description | striptags | raw }} </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <h1 class="text-center fw-bold roboto-slab my-5">Revenez très prochainement</h1>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="a-animal-desc" id="a-animal-desc">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 px-0">
+                    <div class="animal-img">
+                        <img src="{{ vich_uploader_asset(animal, 'imageFile') | imagine_filter('animal_single') }}" class="w-100 h-100 object-fit-cover"
+                             alt="{{ animal
+                             .firstname }}"/>
+                    </div>
+                </div>
+                <div class="col-md-6 px-0">
+                    <div class="animal-desc">
+                        <h1 class="roboto-slab text-white">{{ animal.firstname }}</h1>
+                        <h4>Race: <span class="animal-scientific-name">{{ animal.race }}</span></h4>
+                        {# <h5>Nom scientifique: <span class="animal-scientific-name">Ara ararauna</span></h5> #}
+                        <p class="py-4">
+                            {{ animal.description ? : 'Aucune info sur '~ animal.firstname }}
+                        </p>
+                        <h2 class="roboto-slab text-white">Ce que le vétérinaire dit</h2>
+                        <div class="vet-observations">
+                            <dl>
+                                <dt class="text-white">Etat de l'animal :</dt>
+                                <dd>{{ animal.vetReport.healthState is defined ? animal.vetReport.healthState : 'Indéfini' }}</dd>
+                                <dt class="text-white">Nourriture proposée :</dt>
+                                <dd>{{ animal.vetReport.animalFood is defined ? animal.vetReport.animalFood : 'Indéfini' }}</dd>
+                                <dt class="text-white">Ration :</dt>
+                                <dd>{{ animal.vetReport.quantity is defined ? animal.vetReport.quantity : 'Indéfini' }}</dd>
+                                <dt class="text-white">Dernière visite :</dt>
+                                <dd>{{ animal.vetReport.updatedAt is defined ? animal.vetReport.updatedAt : 'Indéfini' }}</dd>
+                                <dt class="text-white">Autre information :</dt>
+                                <dd>{{ animal.vetReport.detail is defined ? animal.vetReport.detail | raw : 'Indéfini' }}</dd>
+                            </dl>
+                        </div>
+
+                        <div class="views mt-5">
+                            <h6 class="poppins text-white-50">Cet animal a été consulté <span class="fw-bold text-white fst-italic">{{ mongoDBAnimal.count
+                                    }} fois</span>.</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block title %}
+    {{ animal.firstname }}
+{% endblock %}
+

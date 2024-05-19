@@ -40,6 +40,9 @@ class VetReport
     #[ORM\ManyToOne(inversedBy: 'vetReports')]
     private ?HealthState $healthState = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -125,6 +128,18 @@ class VetReport
     public function setHealthState(?HealthState $healthState): static
     {
         $this->healthState = $healthState;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

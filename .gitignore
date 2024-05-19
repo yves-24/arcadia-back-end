@@ -14,8 +14,12 @@
 ###< phpunit/phpunit ###
 
 ###> liip/imagine-bundle ###
-/public/media/cache/
+/public/media
 ###< liip/imagine-bundle ###
+
+###> SASS/SASS ###
+/public/assets/sass
+###< SASS/SASS ###
 
 ###> symfony/webpack-encore-bundle ###
 /node_modules/

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les habitats de notre Zoo{% endblock %}
+
+{% block body %}
+    <section class="a-banner a-habits d-flex justify-content-center align-items-center flex-wrap" id="a-banner">
+        <div class="container-fluid">
+            <div class="banner-text">
+                <h1 class="banner-main-title mb-4">Nos Habitats</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="a-habitats py-5 d-flex justify-content-center align-items-center" id="a-habitats">
+        <div class="container my-5">
+            {% if habitats | length != 0 %}
+                <div class="row justify-content-center mb-5">
+                    {% for habitat in habitats %}
+                        <div class="col-md-3 col-sm-1">
+                            <div class="habitat py-4">
+                                <div class="a-card">
+                                    <div class="a-card-image">
+                                        <img src="{{ vich_uploader_asset(habitat, 'imageFile') | imagine_filter('habitat_presentation') }}"
+                                             alt="{{ habitat.name }}"/>
+                                    </div>
+                                    <div class="a-card-label text-white">
+                                        <a href="{{ path('arcadia_single_habitat', {'slug': habitat.slug}) }}" class="d-flex justify-content-between
+                                        align-items-center
+                                        flex-wrap">
+                                            <h3><span>Habitat des </span> {{ habitat.name }}</h3>
+                                            <span class="material-icons text-white"> navigate_next </span>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="row justify-content-center align-items-center">
+                    {{ knp_pagination_render(habitats) }}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

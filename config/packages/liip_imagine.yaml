@@ -25,3 +25,15 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [240, 300], mode: outbound }
+        habitat_banner:
+            quality: 100
+            filters:
+                thumbnail: { size: [960, 720], mode: outbound }
+        habitat_gallery_presentation:
+            quality: 75
+            filters:
+                thumbnail: { size: [400, 400], mode: outbound }
+        animal_single:
+            quality: 75
+            filters:
+                thumbnail: { size: [600, 900], mode: outbound }

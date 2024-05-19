@@ -39,7 +39,7 @@
 
     <section class="a-habitats py-5 d-flex justify-content-center align-items-center" id="a-habitats">
         <div class="container my-5">
-            {% if habitats | length > 0 %}
+            {% if habitats | length != 0 %}
                 <h1 class="text-center fw-bold roboto-slab my-5">Zoom Sur Le Zoo</h1>
                 <div class="row justify-content-center mb-5">
                     {% for habitat in habitats %}
@@ -51,7 +51,9 @@
                                              alt="{{ habitat.name }}"/>
                                     </div>
                                     <div class="a-card-label text-white">
-                                        <a href="#" class="d-flex justify-content-between align-items-center flex-wrap">
+                                        <a href="{{ path('arcadia_single_habitat', {'slug': habitat.slug}) }}" class="d-flex justify-content-between
+                                        align-items-center
+                                        flex-wrap">
                                             <h3><span>Habitat des </span> {{ habitat.name }}</h3>
                                             <span class="material-icons text-white"> navigate_next </span>
                                         </a>
@@ -81,14 +83,14 @@
     <section class="a-animals text-white bg-rich-black py-5 d-flex justify-content-center align-items-center" id="a-habitats">
         <div class="container my-5">
 
-            {% if animals | length > 0 %}
+            {% if animals | length != 0 %}
                 <h1 class="text-center fw-bold roboto-slab my-5">Les Animaux Du Zoo</h1>
                 <div class="row justify-content-center mb-5">
                     {% for animal in animals %}
                         <div class="col-md-3 col-sm-1">
                             <div class="animal py-4">
                                 <div class="a-card position-relative">
-                                    <a href="#" class="text-decoration-none">
+                                    <a href="{{ path('arcadia_animal_single', {'slug': animal.slug}) }}" class="text-decoration-none">
                                         <div class="a-card-image">
                                             <img src="{{ vich_uploader_asset(animal, 'imageFile') | imagine_filter('animal_presentation') }}" alt="{{ animal
                                             .firstname }}"/>
@@ -147,15 +149,15 @@
                 </div>
                 <div class="col-md-6 col-sm-12">
                     {{ form_start(adviceForm) }}
-                        <div class="mb-3">
-                            {{ form_row(adviceForm.username) }}
-                        </div>
-                        <div class="mb-3">
-                            {{ form_row(adviceForm.comment) }}
-                        </div>
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-dark btn-lg px-5 py-3 fw-bold">Poster un avis</button>
-                        </div>
+                    <div class="mb-3">
+                        {{ form_row(adviceForm.username) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(adviceForm.comment) }}
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-dark btn-lg px-5 py-3 fw-bold">Poster un avis</button>
+                    </div>
                     {{ form_end(adviceForm) }}
 
                 </div>

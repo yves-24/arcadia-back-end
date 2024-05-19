@@ -99,15 +99,12 @@ section.a-banner {
   background-size: cover;
 }
 section.a-banner.a-habits {
-  background: url("../../images/banner/habitats-banner.jpg") center center no-repeat !important;
   background-size: cover !important;
 }
 section.a-banner.a-habitat {
-  background: url("../../images/animals/perroquets/ensemble-1280.jpg") center center no-repeat !important;
   background-size: cover !important;
 }
 section.a-banner.a-animal {
-  background: url("../../images/animals/perroquets/mahonne-cover.jpg") center center no-repeat !important;
   background-size: cover !important;
 }
 section.a-banner::before {

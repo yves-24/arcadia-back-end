@@ -5,15 +5,35 @@ namespace App\Repository;
 use App\Entity\Animal;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @extends ServiceEntityRepository<Animal>
  */
 class AnimalRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, private readonly PaginatorInterface $paginator)
     {
         parent::__construct($registry, Animal::class);
+    }
+
+    /**
+     * Récupère les animaux et renvoie le résultat sous forme de résultat paginé
+     * @param int $page La page courante. Ex. 3e page des animaux
+     * @param int $limit Le nombre d'animaux affichés sur chaque page
+     * @return PaginationInterface
+     */
+    public function getPaginatedAnimals(int $page, int $limit = 16): PaginationInterface
+    {
+        $rawData = $this
+            ->createQueryBuilder('a')
+            ->orderBy('a.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $this->paginator->paginate($rawData, $page, $limit);
     }
 
     //    /**

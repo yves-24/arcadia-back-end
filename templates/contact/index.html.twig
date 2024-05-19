@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contactez-nous! | {% endblock %}
+
+{% block body %}
+    <section class="a-login py-5 d-flex align-items-center" id="a-login">
+        <div class="container my-5 h-100">
+            <div class="row align-items-center h-100">
+                <div class="col-md-6 col-sm-12 d-flex flex-wrap align-items-center">
+                    <h1 class="kaushan-script-regular release-rate w-100">Nous contacter.</h1>
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-primary w-100">{{ message }}</div>
+                    {% endfor %}
+                </div>
+                <div class="col-md-6 col-sm-12">
+
+                    {{ form_start(form) }}
+                    <div class="mb-3">
+                        {{ form_row(form.email) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(form.object) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(form.message) }}
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" name="post_message" class="btn btn-dark btn-lg px-5 py-3 fw-bold">
+                            Envoyer <span class="material-icons text-white play-icon"> play_arrow </span>
+                        </button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
